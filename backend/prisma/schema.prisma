@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Admin {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String   @unique
+  password_hash String
+  createdAt     DateTime @default(now())
+}
+
+model Mentor {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String   @unique
+  password_hash String
+  phone         String?
+  designation   String?
+  department    String
+  section       String
+  status        String   @default("Active")
+  createdAt     DateTime @default(now())
+}
+
+model Student {
+  id            Int            @id @default(autoincrement())
+  student_id    String         @unique
+  name          String
+  email         String         @unique
+  password_hash String
+  department    String
+  section       String
+  createdAt     DateTime       @default(now())
+  leaves        Leave[]
+  notifications Notification[]
+}
+
+model Notification {
+  id          Int      @id @default(autoincrement())
+  student_id  Int
+  message     String
+  is_read     Boolean  @default(false)
+  created_at  DateTime @default(now())
+  
+  student     Student  @relation(fields: [student_id], references: [id])
+}
+
+model Leave {
+  id                    Int      @id @default(autoincrement())
+  student_id            Int
+  department            String
+  section               String
+  leave_type            String
+  from_date             String
+  to_date               String
+  reason                String
+  status                String   @default("Pending") // Pending, Approved, Rejected
+  remarks               String?
+  applied_at            DateTime @default(now())
+  approved_at           DateTime?
+  approved_by           String?
+  approval_reference_no String?  @unique
+  
+  student               Student  @relation(fields: [student_id], references: [id])
+}

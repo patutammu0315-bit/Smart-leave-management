@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- §2.2.1 Authentication: Login page — users log in with email + password -->
+<!-- §2.2.7 Error Handling: displays error message for invalid credentials -->
+<!-- §2.6.1 Student Documentation: login steps provided via UI -->
+<!-- RTM: FR-01 (D-ARCH-01, D-SEC-01) | FR-06 (D-SEC-02) | NFR-01 (D-SEC-03) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Leave Management System</title>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='ifet-logo.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <img src="{{ url_for('static', filename='ifet-banner-logo.png') }}" alt="IFET College Logo" style="height: 60px; object-fit: contain;">
+    </div>
+    <div class="auth-card" style="text-align:center; margin-top: 80px;">
+        <h2 style="color:#1f2937; margin-bottom: 20px;">Login</h2>
+
+        {% if error %}
+        <div class="error-msg">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <div class="auth-footer">
+            Don't have an account? <a href="/register">Register</a>
+        </div>
+    </div>
+</body>
+</html>

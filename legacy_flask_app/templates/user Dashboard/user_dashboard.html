@@ -1,0 +1,77 @@
+T <!DOCTYPE html>
+<!-- §2.2.2 Student: Dashboard accessible after login — shows leave summary -->
+<!-- §2.2.2: View leave balance (total/approved/pending/rejected counts) -->
+<!-- §2.3.1 Student characteristics: limited access — only own leave data shown -->
+<!-- RTM: FR-04 (D-DB-02) | NFR-04 (D-ARCH-04) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — LeaveOk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="{{ url_for(\'static\', filename=\'ifet-logo.jpeg\') }}" alt="IFET College Logo" style="max-height: 50px; width: auto; margin-right: 10px;">
+            <span style="font-size: 1.2rem; font-weight: bold; color: #1e293b;">IFET College</span>
+        </div>
+        <nav>
+            <a href="/user/dashboard" class="active"><span class="nav-icon">⊞</span> Dashboard</a>
+            <a href="/user/apply_leave"><span class="nav-icon">＋</span> Apply Leave</a>
+            <a href="/user/leave_history"><span class="nav-icon">☰</span> Leave History</a>
+            <a href="/user/leave_status"><span class="nav-icon">◎</span> Leave Status</a>
+            <a href="/user/profile"><span class="nav-icon">👤</span> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/logout"><span class="nav-icon">⏻</span> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="topbar">
+            <h1>Dashboard</h1>
+            <div class="user-info">
+                <div class="avatar">{{ (user_name or 'U')[0]|upper }}</div>
+                <span>{{ user_name }}</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="cards-grid">
+                <div class="stat-card blue">
+                    <h4>Total Leaves</h4>
+                    <p>{{ total_leaves }}</p>
+                </div>
+                <div class="stat-card green">
+                    <h4>Approved</h4>
+                    <p>{{ approved_leaves }}</p>
+                </div>
+                <div class="stat-card yellow">
+                    <h4>Pending</h4>
+                    <p>{{ pending_leaves }}</p>
+                </div>
+                <div class="stat-card red">
+                    <h4>Rejected</h4>
+                    <p>{{ rejected_leaves }}</p>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-card-header">
+                    <h3>Quick Actions</h3>
+                </div>
+                <div style="padding:24px; display:flex; gap:12px;">
+                    <a href="/user/apply_leave"><button class="btn btn-blue">＋ Apply for Leave</button></a>
+                    <a href="/user/leave_history"><button class="btn btn-ghost">☰ View History</button></a>
+                    <a href="/user/leave_status"><button class="btn btn-ghost">◎ Check Status</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- §2.1 System Environment: Entry point — initiates the login/register flow (Fig.1) -->
+<!-- §2.2.1: Logged-in users are redirected to their dashboard automatically -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaveOk — Leave Management System</title>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='ifet-logo.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <img src="{{ url_for('static', filename='ifet-banner-logo.png') }}" alt="IFET College Logo" style="height: 60px; object-fit: contain;">
+    </div>
+    <div class="auth-card" style="text-align:center; margin-top: 80px;">
+        <p style="color:#64748b; font-size:14px; margin-bottom:28px;">Smart Leave Management System</p>
+        <a href="/login" class="btn-primary" style="display:block;width:100%;padding:12px;margin-bottom:12px;background:linear-gradient(135deg,#4facfe,#00c6ff);color:white;font-size:15px;font-weight:600;border-radius:8px;text-align:center;">Login</a>
+        <a href="/register" class="btn-outline" style="display:block;width:100%;padding:12px;background:transparent;border:2px solid #4facfe;color:#4facfe;font-size:15px;font-weight:600;border-radius:8px;text-align:center;">Register</a>
+    </div>
+</body>
+</html>

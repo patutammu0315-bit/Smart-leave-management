@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .vscode/
 .env
+node_modules/
+*.db
+*.db-journal
+backend/dev.db
