@@ -4,12 +4,12 @@ import { GraduationCap, Users, ShieldCheck } from 'lucide-react';
 export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 relative">
-      
+
       {/* College Logo - Top Left */}
       <div className="absolute top-6 left-6">
-        <img 
-          src="/ifet-banner-logo.png" 
-          alt="IFET College Logo" 
+        <img
+          src="/ifet-banner-logo.png"
+          alt="IFET College Logo"
           className="h-16 object-contain"
         />
       </div>
